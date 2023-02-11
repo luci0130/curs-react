@@ -8,7 +8,29 @@ class App extends React.Component {
         super();
         this.state = {
             background: 'grey',
-            color: 'white'
+            color: 'white',
+            users: [
+                {
+                    name: 'Mohamed Salah',
+                    email: 'mohamed.salah@gmail.com',
+                    imageSrc: 'http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcRllHUNrwAWlEok2FzOYQIIuCm16E-ZjCLY3RrJ5_FHawkLwLXVWl9T-84Wu5c2CwEB4Zg7BeY-5J9QrXA',
+                    salary: '100.000$',
+                    isGoldClient: true
+                },
+                {
+                    name: 'Roberto Firminio',
+                    email: 'roberto.firminio@gmail.com',
+                    imageSrc: 'https://talksport.com/wp-content/uploads/sites/5/2022/10/liverpools-brazilian-striker-roberto-firmino-767549102.jpg?strip=all&quality=100&w=960',
+                    salary: '200.000$',
+                    isGoldClient: true
+                },
+                {
+                    name: 'Sadio Mane',
+                    email: 'sadio.mane@gmail.com',
+                    imageSrc: 'https://bayernstrikes.com/wp-content/uploads/getty-images/2017/07/1240962810.jpeg',
+                    salary: '50.000$'
+                }
+            ]
         };
     }
 
@@ -30,16 +52,18 @@ class App extends React.Component {
                 <UserAddForm></UserAddForm>
                 <div className="user-list">
                     <UserItem
-                        name="Mohamed Salah"
-                        email="mohamed.salah@gmail.com"
-                        imageSrc="http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcRllHUNrwAWlEok2FzOYQIIuCm16E-ZjCLY3RrJ5_FHawkLwLXVWl9T-84Wu5c2CwEB4Zg7BeY-5J9QrXA"
-                        salary="100.000$"
+                        name={this.state.users[0].name}
+                        email={this.state.users[0].email}
+                        imageSrc={this.state.users[0].imageSrc}
+                        salary={this.state.users[0].salary}
+                        isGoldClient={this.state.users[0].isGoldClient}
                     />
                     <UserItem
                         name="Roberto Firminio"
                         email="roberto.firminio@gmail.com"
                         imageSrc="https://talksport.com/wp-content/uploads/sites/5/2022/10/liverpools-brazilian-striker-roberto-firmino-767549102.jpg?strip=all&quality=100&w=960"
                         salary="200.000$"
+                        isGoldClient={true}
                     />
                     <UserItem
                         name="Sadio Mane"
