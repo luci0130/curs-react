@@ -5,6 +5,7 @@ import UserList from "./components/UserList";
 
 class App extends React.Component {
     constructor() {
+        console.log("App.js Constructor has been called.");
         super();
         this.state = {
             background: 'grey',
@@ -44,21 +45,37 @@ class App extends React.Component {
     }
 
     render() {
+        console.log("App.js render has been called.");
         return (
             <div className="App" style={{background: this.state.background, color: this.state.color}}>
                 <h1>User List</h1>
                 <UserAddForm></UserAddForm>
-                <UserList users={this.state.users}></UserList>
+
+                {
+                    this.state.background !== '#000000'
+                        ? <UserList users={this.state.users}></UserList>
+                        : null
+                }
 
                 <div>
-                    <input type="color" id="background" name="background" onChange={ (event) => this.handleBackgroundChange(event)}/>
+                    <input type="color" id="background" name="background"
+                           onChange={(event) => this.handleBackgroundChange(event)}/>
                     <label htmlFor="background">Background</label>
 
-                    <input type="color" id="text" name="text" onChange={ (event) => this.handleTextChange(event)}/>
+                    <input type="color" id="text" name="text" onChange={(event) => this.handleTextChange(event)}/>
                     <label htmlFor="text">Text</label>
                 </div>
             </div>
         );
+    }
+
+    componentDidMount() {
+        console.log("App.js componentDidMount has been called.");
+    }
+
+    componentDidUpdate() {
+        console.log("App.js componentDidUpdate has been called.");
+
     }
 }
 

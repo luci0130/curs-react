@@ -1,14 +1,18 @@
 import React from "react";
 import UserItem from "./UserItem";
 
-function UserList(props) {
-    const {users} = props;
+class UserList extends React.Component {
 
-    return (
+    constructor(props) {
+        console.log("UserList.js Constructor has been called.");
+        super(props);
+    }
 
-        <div className="user-list">
+    render() {
+        console.log("UserList.js render has been called.");
+        return <div className="user-list">
             {
-                users.map((user, index) => {
+                this.props.users.map((user, index) => {
                     return <UserItem
                         name={user.name}
                         email={user.email}
@@ -19,8 +23,16 @@ function UserList(props) {
                     />
                 })
             }
-        </div>
-    );
+        </div>;
+    }
+
+    componentDidMount() {
+        console.log("UserList.js componentDidMount has been called.");
+    }
+
+    componentWillUnmount() {
+        console.log("UserList.js componentWillUnmount has been called.");
+    }
 }
 
 export default UserList;
