@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import UserAddForm from "./components/UserAddForm";
 import UserList from "./components/UserList";
+import PostList from "./components/PostList";
 
 class App extends React.Component {
     constructor() {
@@ -10,28 +11,7 @@ class App extends React.Component {
         this.state = {
             background: 'grey',
             color: 'white',
-            users: [
-                {
-                    name: 'Mohamed Salah',
-                    email: 'mohamed.salah@gmail.com',
-                    imageSrc: 'http://t0.gstatic.com/licensed-image?q=tbn:ANd9GcRllHUNrwAWlEok2FzOYQIIuCm16E-ZjCLY3RrJ5_FHawkLwLXVWl9T-84Wu5c2CwEB4Zg7BeY-5J9QrXA',
-                    salary: '100.000$',
-                    isGoldClient: true
-                },
-                {
-                    name: 'Roberto Firminio',
-                    email: 'roberto.firminio@gmail.com',
-                    imageSrc: 'https://talksport.com/wp-content/uploads/sites/5/2022/10/liverpools-brazilian-striker-roberto-firmino-767549102.jpg?strip=all&quality=100&w=960',
-                    salary: '200.000$',
-                    isGoldClient: true
-                },
-                {
-                    name: 'Sadio Mane',
-                    email: 'sadio.mane@gmail.com',
-                    imageSrc: 'https://bayernstrikes.com/wp-content/uploads/getty-images/2017/07/1240962810.jpeg',
-                    salary: '50.000$'
-                }
-            ]
+            typeList: 'users'
         };
     }
 
@@ -44,18 +24,29 @@ class App extends React.Component {
         this.setState({color: event.target.value});
     }
 
+    showList(typeOfList) {
+        if (typeOfList === 'users') {
+            return <UserList/>
+        } else if (typeOfList === 'posts') {
+            return <PostList/>
+        } else {
+            return null;
+        }
+    }
+
+    toggleList = () => {
+        this.setState({
+            typeList: this.state.typeList === 'users' ? 'posts' : 'users',
+        });
+    };
+
+
     render() {
         console.log("App.js render has been called.");
         return (
             <div className="App" style={{background: this.state.background, color: this.state.color}}>
                 <h1>User List</h1>
                 <UserAddForm></UserAddForm>
-
-                {
-                    this.state.background !== '#000000'
-                        ? <UserList users={this.state.users}></UserList>
-                        : null
-                }
 
                 <div>
                     <input type="color" id="background" name="background"
@@ -65,6 +56,21 @@ class App extends React.Component {
                     <input type="color" id="text" name="text" onChange={(event) => this.handleTextChange(event)}/>
                     <label htmlFor="text">Text</label>
                 </div>
+
+                <div className="container">
+                    <div>
+                        <label className="switch">
+                            <input
+                                type="checkbox"
+                                checked={this.state.typeList === 'posts'}
+                                onChange={this.toggleList}
+                            />
+                            <span className="slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                {this.showList(this.state.typeList)}
             </div>
         );
     }

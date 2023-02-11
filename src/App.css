@@ -48,10 +48,20 @@
   display: flex;
 }
 
-.user-item {
+.post-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+
+}
+
+.user-item, .post-item {
   border-style: solid;
   margin: 1rem;
   align-self: center;
+  padding: 1rem;
+  max-width: 360px;
 }
 
 input {
@@ -71,4 +81,65 @@ input {
 
 .user-form div label{
   width: 50px;
+}
+
+/*Switch Between Users & Posts*/
+.container {
+  display: flex;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+input[type=checkbox] {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+}
+
+input[type=checkbox]:checked + .slider {
+  background-color: #2196F3;
+}
+
+input[type=checkbox]:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input[type=checkbox]:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
 }
