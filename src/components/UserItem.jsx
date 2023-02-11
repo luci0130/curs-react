@@ -1,8 +1,6 @@
 import React from "react";
 
 function UserItem(props) {
-    console.log(props);
-
     const {name, email, imageSrc, salary, isGoldClient} = props;
     return (
         <div className="user-item">
