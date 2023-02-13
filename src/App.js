@@ -11,7 +11,8 @@ class App extends React.Component {
         this.state = {
             background: 'grey',
             color: 'white',
-            typeList: 'users'
+            typeList: 'users',
+            users: []
         };
     }
 
@@ -26,7 +27,7 @@ class App extends React.Component {
 
     showList(typeOfList) {
         if (typeOfList === 'users') {
-            return <UserList/>
+            return <UserList users={this.state.users}/>
         } else if (typeOfList === 'posts') {
             return <PostList/>
         } else {
@@ -40,13 +41,20 @@ class App extends React.Component {
         });
     };
 
+    updateUsersList(user) {
+        this.setState((previousState) => {
+            return {
+                users: [...previousState.users, user]
+            }
+        });
+    }
+
 
     render() {
         console.log("App.js render has been called.");
         return (
             <div className="App" style={{background: this.state.background, color: this.state.color}}>
-                <h1>User List</h1>
-                <UserAddForm></UserAddForm>
+                <UserAddForm updateUserList={(user) => {this.updateUsersList(user)}}></UserAddForm>
 
                 <div>
                     <input type="color" id="background" name="background"
@@ -70,6 +78,7 @@ class App extends React.Component {
                     </div>
                 </div>
 
+                <h1>User List</h1>
                 {this.showList(this.state.typeList)}
             </div>
         );
@@ -77,6 +86,18 @@ class App extends React.Component {
 
     componentDidMount() {
         console.log("App.js componentDidMount has been called.");
+        fetch('https://jsonplaceholder.typicode.com/users')
+            .then((response) => {
+                return response.json();
+            }).then((users) => {
+            this.setState({
+                'users': users.filter((user, index) => {
+                        user.isGoldClient = true;
+                        return index < 3;
+                    }
+                )
+            })
+        })
     }
 
     componentDidUpdate() {
