@@ -9,7 +9,7 @@ class App extends React.Component {
         console.log("App.js Constructor has been called.");
         super();
         this.state = {
-            background: 'grey',
+            background: 'linear-gradient(#141e30, #243b55)',
             color: 'white',
             typeList: 'users',
             users: []
@@ -27,7 +27,7 @@ class App extends React.Component {
 
     showList(typeOfList) {
         if (typeOfList === 'users') {
-            return <UserList users={this.state.users}/>
+            return <UserList users={this.state.users} deleteUser={(id) => {this.deleteUser(id)}}/>
         } else if (typeOfList === 'posts') {
             return <PostList/>
         } else {
@@ -41,13 +41,37 @@ class App extends React.Component {
         });
     };
 
+    getMaxId(users) {
+        let maxId = 0;
+
+        users.forEach(user => {
+            if (user.id > maxId) {
+                maxId = user.id;
+            }
+        });
+
+        return maxId;
+    }
+
     updateUsersList(user) {
         this.setState((previousState) => {
+            const userWithId = {
+                ...user,
+                id: this.getMaxId(previousState.users) + 1
+            }
             return {
-                users: [...previousState.users, user]
+                users: [...previousState.users, userWithId]
             }
         });
     }
+
+    deleteUser (id) {
+        console.log("delete - App");
+        console.log(id);
+        this.setState((previousState) => ({
+            users: previousState.users.filter((user) => user.id !== id)
+        }));
+    };
 
 
     render() {
@@ -56,7 +80,8 @@ class App extends React.Component {
             <div className="App" style={{background: this.state.background, color: this.state.color}}>
                 <UserAddForm updateUserList={(user) => {this.updateUsersList(user)}}></UserAddForm>
 
-                <div>
+                <div className="color-picker">
+                    <h2>Choose the color</h2>
                     <input type="color" id="background" name="background"
                            onChange={(event) => this.handleBackgroundChange(event)}/>
                     <label htmlFor="background">Background</label>
@@ -65,6 +90,7 @@ class App extends React.Component {
                     <label htmlFor="text">Text</label>
                 </div>
 
+                <h2>Switch Users | Posts</h2>
                 <div className="container">
                     <div>
                         <label className="switch">
@@ -93,6 +119,8 @@ class App extends React.Component {
             this.setState({
                 'users': users.filter((user, index) => {
                         user.isGoldClient = true;
+                        user.imageSrc = `${process.env.PUBLIC_URL}/user-picture.png`;
+                        user.salary = Math.floor(Math.random() * 1000) + 100;
                         return index < 3;
                     }
                 )
