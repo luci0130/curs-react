@@ -8,20 +8,53 @@ class UserAddForm extends React.Component {
         this.state = {
             name: '',
             email: '',
-            isGoldClient: false
+            isGoldClient: false,
+            nameError: '',
+            emailError: ''
         }
     }
 
     handleNameChange(event) {
-        this.setState({name: event.target.value});
+        const nameField = event.target;
+        this.setState({name: nameField.value});
+
+        if (nameField.value === '') {
+            this.setState({ nameError: 'Name is required' });
+            nameField.className = "invalid";
+        } else {
+            this.setState({ nameError: '' });
+            nameField.className = "valid";
+        }
     }
 
     handleEmailChange(event) {
-        this.setState({email: event.target.value});
+        const emailField = event.target;
+        this.setState({ email: emailField.value });
+        // Validate email input
+        if (!event.target.value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            this.setState({ emailError: 'Invalid email address' });
+            emailField.className = "invalid";
+        } else {
+            this.setState({ emailError: '' });
+            emailField.className = "valid";
+        }
+
     }
 
     handleGoldClientChange(event) {
         this.setState({isGoldClient: event.target.checked});
+    }
+
+    validateName(name) {
+        return true;
+    }
+
+    validateEmail(email) {
+        return true;
+    }
+
+    validateForm(newUser) {
+
     }
 
     handleFormSubmit(event) {
@@ -30,7 +63,8 @@ class UserAddForm extends React.Component {
             name: this.state.name,
             email: this.state.email,
             isGoldClient: this.state.isGoldClient,
-            id: Math.floor(Math.random() * 1000) + 100
+            imageSrc: `${process.env.PUBLIC_URL}/administrator-user.png`,
+            salary: Math.floor(Math.random() * 1000) + 100,
         }
         this.props.updateUserList(newUser);
     }
@@ -49,6 +83,8 @@ class UserAddForm extends React.Component {
                         onChange={(e) => {this.handleNameChange(e)}}>
                     </input>
                 </div>
+                {this.state.nameError && <div className="error">{this.state.nameError}</div>}
+
 
                 <div>
                     <label htmlFor="email">Email</label>
@@ -60,6 +96,8 @@ class UserAddForm extends React.Component {
                         onChange={(e) => {this.handleEmailChange(e)}}>
                     </input>
                 </div>
+                {this.state.emailError && <div className="error">{this.state.emailError}</div>}
+
 
                 <div>
                     <label htmlFor="gold-client">Gold Client</label>
@@ -72,7 +110,7 @@ class UserAddForm extends React.Component {
                     </input>
                 </div>
 
-                <input type="submit" value="Create User"/>
+                <input className="button add-button" type="submit" value="Create User"/>
             </form>
         );
     }

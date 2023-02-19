@@ -14,10 +14,14 @@ class UserList extends React.Component {
             {
                 this.props.users.map((user) => {
                     return <UserItem
+                        id={ user.id }
                         name={user.name}
                         email={user.email}
+                        imageSrc={user.imageSrc}
+                        salary={user.salary}
                         isGoldClient={user.isGoldClient}
                         key={user.id}
+                        deleteUser={this.props.deleteUser}
                     />
                 })
             }
