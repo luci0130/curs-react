@@ -1,70 +1,60 @@
-# Getting Started with Create React App
+# JavaScript Advanced - React - Proiectul 1
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Aplicatie de listare si adaugare useri noi
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+Puteti accesa proiectul prin link-ul următor:
 
-### `npm start`
+https://react.basic.turi.ro/
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Functionalitati
 
-### `npm test`
+* Click pe Switch Users - va lista utilizatori de la urmatorul API: https://jsonplaceholder.typicode.com/users
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+* Click pe Switch Posts - va lista postarile de la urmatorul API: https://jsonplaceholder.typicode.com/posts
 
-### `npm run build`
+* Click pe "Create User" - va adauga un user in lista de useri curenti
+* Click pe "Delete" - va sterge un user din lista de useri curenti
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+* Click pe "Choose the color" - Background - va schimba culoarea de background a aplicatiei.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* Click pe "Choose the color" - Text - va schimba culoarea textului in intreaga aplicatie.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Pentru a rula local proiectul
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. `git clone https://github.com/luci0130/curs-react.git`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. `cd curs-react`
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. `npm install`
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. `npm start`
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Commits
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Pentru a vedea progresiv cum a fost realizat acest proiect urmariti urmatoarele commit-uri.
 
-### Code Splitting
+* Cursul 2: Componente, props, state:
+  * https://github.com/luci0130/curs-react/commit/4a5d3019fa293e43c75da14c985073a4b8c59eb6
+  * https://github.com/luci0130/curs-react/commit/22006c0dbaf5b7bf77e77cd7200a6210d56ef350
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Curs 3: Lifecycle methods, randare conditionata / repetitiva:
+  * Randare conditionata - https://github.com/luci0130/curs-react/commit/03930d2b3a5fc42b0f52d0fdfd109dbf00f6c7ad
+  * Randare repetitiva - https://github.com/luci0130/curs-react/commit/b13f9de9aad930da09d5d1fcac276a9ad2e9f700
+  * Lifecycle methods - https://github.com/luci0130/curs-react/commit/c479c40dce221b558a32215c0f448df9bdf61d2c
+  * Practice: ternary, map, async - https://github.com/luci0130/curs-react/commit/b6a3d39827fab582e8a99d03984c94b180007b9c
 
-### Analyzing the Bundle Size
+* Curs 4: Formulare, pasarea datelor intre component: 
+  * https://github.com/luci0130/curs-react/commit/c0d14116feb232cb0455065120ac746e62862358
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* Proiectul 1: https://github.com/luci0130/curs-react/commit/6f7cb8757eaae997bf8cc7cbe1da9e1058cf69dd
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Screenshot
 
-### Advanced Configuration
+![Screenshot](public/screenshot2.png?raw=true "Screenshot")
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

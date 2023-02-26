@@ -74,6 +74,8 @@
   background-color: white;
   color: black;
   border: 2px solid #dc3545;
+  margin-top: auto;
+  width: 70%;
 }
 
 .delete-button:hover {
@@ -83,23 +85,29 @@
 
 
 .user-list{
+  max-width: 1400px;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .post-list {
   display: flex;
+  max-width: 1300px;
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
-
 }
 
 .user-item, .post-item {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
   border-style: solid;
   margin: 1rem;
   align-self: center;
   padding: 1rem;
   max-width: 360px;
+  min-height: 440px;
 }
 
 /*Switch Between Users & Posts*/
