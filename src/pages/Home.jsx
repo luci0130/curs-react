@@ -3,6 +3,7 @@ import '../App.css';
 import UserAddForm from "../components/UserAddForm";
 import UserList from "../components/UserList";
 import PostList from "../components/PostList";
+import Footer from "../components/Footer";
 
 class Home extends React.Component {
     constructor() {
@@ -106,6 +107,8 @@ class Home extends React.Component {
 
                 <h1>User List</h1>
                 {this.showList(this.state.typeList)}
+
+                <Footer />
             </div>
         );
     }

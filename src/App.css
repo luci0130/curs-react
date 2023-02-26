@@ -277,3 +277,29 @@ border-radius: 34px;
     transform: translate(-22px,5px) skew(21deg);
   }
 }
+
+footer {
+  background-color: white;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 25px 0 black;
+  justify-content: center;
+}
+
+footer * {
+  display: inline;
+}
+
+footer li {
+  margin: 20px;
+}
+
+footer li a {
+  color: black;
+  text-decoration: none;
+}

@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import Footer from "../components/Footer";
 
 class About extends Component {
     render() {
@@ -84,7 +85,7 @@ class About extends Component {
                 </ul>
                 <h2 id="screenshot">Screenshot</h2>
                 <p><img src="/screenshot2.png?raw=true" alt="Screenshot" title="Screenshot"></img></p>
-
+                <Footer />
             </div>
         );
     }
