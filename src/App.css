@@ -88,6 +88,8 @@
   max-width: 1400px;
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 100px;
+  justify-content: center;
 }
 
 .post-list {
@@ -96,6 +98,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: baseline;
+  margin-bottom: 100px;
 }
 
 .user-item, .post-item {
@@ -203,6 +206,7 @@ border-radius: 34px;
   flex-direction: column;
   align-content: center;
   align-items: center;
+  margin-bottom: 100px;
 }
 
 #page-404-body {
